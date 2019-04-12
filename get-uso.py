@@ -78,8 +78,8 @@ cursor.execute(sql)
 
 with open("README.md", "w") as f:
     f.write('''
-| BLOG | POSTs | 1º uso | Último uso |
-|:-----|------:|-------:|-----------:|
+| BLOG | POSTs | Último uso | 1º uso |
+|:-----|------:|-----------:|-------:|
     '''.strip())
     results = sorted(cursor.fetchall(), key=sort_dom)
     for row in results:
