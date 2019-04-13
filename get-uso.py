@@ -87,4 +87,10 @@ with open("README.md", "w") as f:
         f.write('''
 | [{0}](https://{0}) | {1} | {2:%Y-%m-%d} | {3:%Y-%m-%d} |
         '''.rstrip().format(*row))
+    f.write('''\n
+Para reordenar la tabla puede usar las extensiones
+[`Tampermonkey`](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=es)
+o [`Greasemonkey`](https://addons.mozilla.org/es/firefox/addon/greasemonkey/)
+con [`Github Sort Content`](https://greasyfork.org/en/scripts/21373-github-sort-content)
+    '''.rstrip())
 db.close()

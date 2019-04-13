@@ -194,3 +194,8 @@
 | [www.tomalatele.tv/web/pruebas](https://www.tomalatele.tv/web/pruebas) | 33 | 2014-01-03 | 2012-05-09 |
 | [www.tomalatele.tv/web/streaming](https://www.tomalatele.tv/web/streaming) | 33 | 2012-05-22 | 2012-05-09 |
 | [www.tomalatele.tv/web/telek](https://www.tomalatele.tv/web/telek) | 17 | 2014-06-03 | 2014-01-31 |
+
+Para reordenar la tabla puede usar las extensiones
+[`Tampermonkey`](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=es)
+o [`Greasemonkey`](https://addons.mozilla.org/es/firefox/addon/greasemonkey/)
+con [`Github Sort Content`](https://greasyfork.org/en/scripts/21373-github-sort-content)
