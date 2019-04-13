@@ -43,7 +43,7 @@ def sort_dom(r):
     path = prs.path
     dom = dom.split(".")
     dom.reverse()
-    return [r[1]] + dom + [path] + list(r[2:])
+    return dom + [path] + list(r[1:])
 
 db = MySQLdb.connect("localhost", user, passwd)
 
