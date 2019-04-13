@@ -193,10 +193,7 @@
 | [alicante.tomalaplaza.net](https://alicante.tomalaplaza.net) | 1651 | 2017-08-21 | 2001-01-01 |
 | [rivas.tomalosbarrios.net](https://rivas.tomalosbarrios.net) | 1688 | 2015-05-09 | 2011-06-23 |
 | [www.tomalatele.tv/web](https://www.tomalatele.tv/web) | 2468 | 2018-11-14 | 2011-08-06 |
-| [www.tomalatele.tv/web/plantilla](https://www.tomalatele.tv/web/plantilla) | 9 | 2013-11-07 | 2012-04-03 |
-| [www.tomalatele.tv/web/pruebas](https://www.tomalatele.tv/web/pruebas) | 33 | 2014-01-03 | 2012-05-09 |
-| [www.tomalatele.tv/web/streaming](https://www.tomalatele.tv/web/streaming) | 33 | 2012-05-22 | 2012-05-09 |
-| [www.tomalatele.tv/web/telek](https://www.tomalatele.tv/web/telek) | 17 | 2014-06-03 | 2014-01-31 |
+| [madrid.tomalaplaza.net](https://madrid.tomalaplaza.net) | 3375 | 2019-03-26 | 2011-04-11 |
 
 Para reordenar la tabla puede usar las extensiones
 [`Tampermonkey`](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=es)
