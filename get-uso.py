@@ -4,25 +4,18 @@ import os
 import sys
 import re
 from urllib.parse import urlparse
-
-import MySQLdb
-
-if 'MYSQL_USER_READ' in os.environ:
-    user, passwd = os.environ['MYSQL_USER_READ'].split()
-else:
-    user = input("Username: ")
-    passwd = getpass.getpass("Password: ")
+from connect import DBs
 
 re_blog = re.compile(r".*_(\d+)_posts$")
 
-def execute(cursor, file):
-    _sql = None
-    with open(file, 'r') as myfile:
-        _sql = myfile.read()
-    cursor.execute(_sql)
-    return cursor.fetchall()
+def title(s, c='=', l=10):
+    s = "{1} {0} {1}".format(s, c*(l-len(s)))
+    if len(s) % 2 == 1:
+        s = c + s
+    return s
 
-def get_site_url(cursor, scheme, wp_posts):
+
+def get_site_url(db, scheme, wp_posts):
     pref=wp_posts[:-5]
     m = re_blog.match(wp_posts)
     if m:
@@ -30,8 +23,8 @@ def get_site_url(cursor, scheme, wp_posts):
         sql = "select option_value URL from %s.%soptions where option_name='siteurl'" % (scheme, pref)
     else:
         sql = "select option_value URL from %s.%soptions where option_name='siteurl'" % (scheme, pref)
-    cursor.execute(sql)
-    siteurl = cursor.fetchone()[0]
+    r = db.execute(sql)
+    siteurl = r[0][0]
     _,siteurl = siteurl.split("//",1)
     if siteurl.endswith("/"):
         siteurl=siteurl[:-1]
@@ -45,43 +38,44 @@ def sort_dom(r):
     dom.reverse()
     return dom + [path] + list(r[1:])
 
-db = MySQLdb.connect("localhost", user, passwd)
+results=[]
+for db in DBs:
+    print(title(db.host))
+    db.connect()
 
-cursor = db.cursor()
+    wps = db.execute('search-wp.sql')
 
-results = execute(cursor, 'search-wp.sql')
+    sql = "select distinct * from ("
 
-sql = "select distinct * from ("
+    for row in wps:
+        siteurl = get_site_url(db,*row)
+        sql = sql+'''
+    	(
+    		select
+                '%s' site,
+                count(*) num,
+                max(post_date) fin,
+                min(post_date) ini
+    		from %s.%s
+    		where
+    		post_status = 'publish' and
+    		post_type in ('post', 'page')
+    	)
+    	UNION
+    	'''.rstrip() % (siteurl, row[0], row[1])
 
-for row in results:
-    siteurl = get_site_url(cursor,*row)
-    sql = sql+'''
-	(
-		select
-            '%s' site,
-            count(*) num,
-            max(post_date) fin,
-            min(post_date) ini
-		from %s.%s
-		where
-		post_status = 'publish' and
-		post_type in ('post', 'page')
-	)
-	UNION
-	'''.rstrip() % (siteurl, row[0], row[1])
+    sql = sql[:-7]
+    sql = sql + "\n) T"
+    results.extend(db.execute(sql))
+    db.close()
 
-sql = sql[:-7]
-
-sql = sql + "\n) T"
-
-cursor.execute(sql)
+results = sorted(results, key=sort_dom)
 
 with open("README.md", "w") as f:
     f.write('''
 | BLOG | POSTs | Último uso | 1º uso |
 |:-----|------:|-----------:|-------:|
     '''.strip())
-    results = sorted(cursor.fetchall(), key=sort_dom)
     for row in results:
         url, num, ini, fin = row
         f.write('''
@@ -93,4 +87,3 @@ Para reordenar la tabla puede usar las extensiones
 o [`Greasemonkey`](https://addons.mozilla.org/es/firefox/addon/greasemonkey/)
 con [`Github Sort Content`](https://greasyfork.org/en/scripts/21373-github-sort-content)
     '''.rstrip())
-db.close()
