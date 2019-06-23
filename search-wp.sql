@@ -1,5 +1,8 @@
-select TT1.table_schema, wp_posts from (
-  select table_schema, table_name wp_user from (
+select distinct
+  concat(TT1.table_schema, '.', SUBSTR(wp_users, 1, length(wp_users)-5)) prefix1,
+  concat(TT1.table_schema, '.', SUBSTR(wp_posts, 1, length(wp_posts)-5)) prefix2
+from (
+  select table_schema, table_name wp_users from (
     select table_schema, table_name, count(*) N
     from information_schema.COLUMNS
     where
@@ -26,9 +29,21 @@ JOIN
     from information_schema.COLUMNS
     where
       column_name in ('ID', 'post_author', 'post_status', 'guid', 'post_type') and
-      table_name like '%_posts'
+      table_name like '%posts'
     group by table_schema, table_name
   ) T3 where T3.N=5
 ) TT3
 ON TT1.table_schema = TT2.table_schema and TT1.table_schema = TT3.table_schema
-order by table_schema, wp_posts;
+JOIN
+(
+  select table_schema, table_name wp_options from (
+    select table_schema, table_name, count(*) N
+    from information_schema.COLUMNS
+    where
+      column_name in ('option_id', 'option_name', 'option_value') and
+      table_name like '%options'
+    group by table_schema, table_name
+  ) T4 where T4.N=3
+) TT4
+ON TT1.table_schema = TT2.table_schema and TT1.table_schema = TT3.table_schema
+;

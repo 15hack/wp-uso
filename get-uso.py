@@ -14,21 +14,11 @@ def title(s, c='=', l=10):
         s = c + s
     return s
 
-
-def get_site_url(db, scheme, wp_posts):
-    pref=wp_posts[:-5]
-    m = re_blog.match(wp_posts)
-    if m:
-        blog_id = int(m.group(1))
-        sql = "select option_value URL from %s.%soptions where option_name='siteurl'" % (scheme, pref)
-    else:
-        sql = "select option_value URL from %s.%soptions where option_name='siteurl'" % (scheme, pref)
-    r = db.execute(sql)
-    siteurl = r[0][0]
-    _,siteurl = siteurl.split("//",1)
-    if siteurl.endswith("/"):
-        siteurl=siteurl[:-1]
-    return siteurl
+def clean_url(url):
+    url = url.split("://", 1)[1]
+    if url.endswith("/"):
+        url = url[:-1]
+    return url
 
 def sort_dom(r):
     prs = urlparse("https://"+r[0])
@@ -38,45 +28,61 @@ def sort_dom(r):
     dom.reverse()
     return dom + [path] + list(r[1:])
 
-results=[]
+activity=[]
 for db in DBs:
     print(title(db.host))
     db.connect()
 
-    wps = db.execute('search-wp.sql')
+    results = db.execute('search-wp.sql')
 
-    sql = "select distinct * from ("
+    prefixes = sorted([r for r in results if r[0]
+                       not in db.db_ban and r[1] not in db.db_ban])
 
-    for row in wps:
-        siteurl = get_site_url(db,*row)
-        sql = sql+'''
-    	(
-    		select
-                '%s' site,
-                count(*) num,
-                max(post_date) fin,
-                min(post_date) ini
-    		from %s.%s
-    		where
-    		post_status = 'publish' and
-    		post_type in ('post', 'page')
-    	)
-    	UNION
-    	'''.rstrip() % (siteurl, row[0], row[1])
+    print("%s wordpress encontrados" % len(prefixes))
 
-    sql = sql[:-7]
-    sql = sql + "\n) T"
-    results.extend(db.execute(sql))
+    results = db.multi_execute(prefixes, '''
+        select
+            '{0}' prefix1,
+            '{1}' prefix2,
+            option_value siteurl
+        from
+            {1}options
+        where
+            option_name = 'siteurl'
+	''', debug="sites", to_tuples=True)
+
+    sites = {}
+    for p1, p2, siteurl in results:
+        site = clean_url(siteurl)
+        if not db.isOkDom(siteurl) or not db.isOk(siteurl):
+            print("%s (%s) sera descartado" % (p2, site))
+            continue
+        sites[site] = (p1, p2)
+
+
+    results = db.multi_execute(sites, '''
+        select
+            '{0}' site,
+            count(*) num,
+            max(post_date) fin,
+            min(post_date) ini
+        from {2}posts
+        where
+        post_status = 'publish' and
+        post_type in ('post', 'page')
+	''', debug="activity", to_tuples=True)
+
+    activity.extend(results)
     db.close()
 
-results = sorted(results, key=sort_dom)
+activity = sorted(activity, key=sort_dom)
 
 with open("README.md", "w") as f:
     f.write('''
 | BLOG | POSTs | Último uso | 1º uso |
 |:-----|------:|-----------:|-------:|
     '''.strip())
-    for row in results:
+    for row in activity:
         url, num, ini, fin = row
         f.write('''
 | [{0}](https://{0}) | {1} | {2:%Y-%m-%d} | {3:%Y-%m-%d} |

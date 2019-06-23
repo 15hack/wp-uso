@@ -1,19 +1,5 @@
 | BLOG | POSTs | Último uso | 1º uso |
 |:-----|------:|-----------:|-------:|
-| [www.primaveravalenciana.info](https://www.primaveravalenciana.info) | 420 | 2014-04-09 | 2012-03-05 |
-| [spanishrevolution.net](https://spanishrevolution.net) | 3 | 2012-10-23 | 2011-06-26 |
-| [berlinbienal.spanishrevolution.net](https://berlinbienal.spanishrevolution.net) | 2 | 2012-03-23 | 2012-03-23 |
-| [blackout.spanishrevolution.net](https://blackout.spanishrevolution.net) | 3 | 2012-01-18 | 2012-01-14 |
-| [destructionhack.spanishrevolution.net](https://destructionhack.spanishrevolution.net) | 2 | 2011-07-12 | 2011-07-12 |
-| [elc.spanishrevolution.net](https://elc.spanishrevolution.net) | 2 | 2016-07-22 | 2016-07-22 |
-| [fuenlabrada.spanishrevolution.net](https://fuenlabrada.spanishrevolution.net) | 3 | 2019-04-13 | 2011-07-11 |
-| [laspalmas.spanishrevolution.net](https://laspalmas.spanishrevolution.net) | 8 | 2011-08-16 | 2011-08-01 |
-| [mumble.spanishrevolution.net](https://mumble.spanishrevolution.net) | 2 | 2011-09-30 | 2011-09-30 |
-| [pedre.spanishrevolution.net](https://pedre.spanishrevolution.net) | 8 | 2011-12-03 | 2011-11-03 |
-| [pedrezuela.spanishrevolution.net](https://pedrezuela.spanishrevolution.net) | 36 | 2012-10-08 | 2011-06-04 |
-| [sevilla.spanishrevolution.net](https://sevilla.spanishrevolution.net) | 2 | 2012-03-07 | 2012-03-07 |
-| [sierranorte.spanishrevolution.net](https://sierranorte.spanishrevolution.net) | 318 | 2012-12-09 | 2011-05-26 |
-| [takethesquare.spanishrevolution.net](https://takethesquare.spanishrevolution.net) | 14 | 2011-09-29 | 2011-08-14 |
 | [takethesquare.net](https://takethesquare.net) | 922 | 2019-06-20 | 2011-07-06 |
 | [15oct.takethesquare.net](https://15oct.takethesquare.net) | 65 | 2017-07-13 | 2011-09-11 |
 | [antibanks.takethesquare.net](https://antibanks.takethesquare.net) | 19 | 2012-02-23 | 2011-08-15 |
@@ -24,7 +10,6 @@
 | [radio.takethesquare.net](https://radio.takethesquare.net) | 3 | 2011-08-19 | 2011-08-05 |
 | [transitionday.takethesquare.net](https://transitionday.takethesquare.net) | 34 | 2012-05-26 | 2011-10-25 |
 | [tomalaplaza.net](https://tomalaplaza.net) | 90 | 2017-01-22 | 2011-05-18 |
-| [15hack.tomalaplaza.net](https://15hack.tomalaplaza.net) | 26 | 2015-04-24 | 2011-07-30 |
 | [15hack.tomalaplaza.net](https://15hack.tomalaplaza.net) | 37 | 2019-04-04 | 2011-07-30 |
 | [15m20.tomalaplaza.net](https://15m20.tomalaplaza.net) | 20 | 2017-09-27 | 2017-01-22 |
 | [actasmadrid.tomalaplaza.net](https://actasmadrid.tomalaplaza.net) | 1585 | 2017-09-14 | 2011-05-17 |
@@ -162,7 +147,6 @@
 | [sanfernandodehenares.tomalosbarrios.net](https://sanfernandodehenares.tomalosbarrios.net) | 159 | 2018-04-25 | 2011-06-02 |
 | [sanmartindelavega.tomalosbarrios.net](https://sanmartindelavega.tomalosbarrios.net) | 35 | 2013-11-12 | 2012-03-09 |
 | [sesena.tomalosbarrios.net](https://sesena.tomalosbarrios.net) | 140 | 2012-01-30 | 2011-09-05 |
-| [sierranorte.tomalosbarrios.net](https://sierranorte.tomalosbarrios.net) | 1065 | 2017-11-22 | 2011-05-26 |
 | [smvaldeiglesias.tomalosbarrios.net](https://smvaldeiglesias.tomalosbarrios.net) | 42 | 2012-03-11 | 2011-06-28 |
 | [soto.tomalosbarrios.net](https://soto.tomalosbarrios.net) | 3 | 2011-06-07 | 2011-06-07 |
 | [stamariadelaalameda.tomalosbarrios.net](https://stamariadelaalameda.tomalosbarrios.net) | 71 | 2012-11-12 | 2011-06-25 |
@@ -182,14 +166,9 @@
 | [villaverde.tomalosbarrios.net](https://villaverde.tomalosbarrios.net) | 1361 | 2015-12-03 | 2010-06-09 |
 | [zarzalejo.tomalosbarrios.net](https://zarzalejo.tomalosbarrios.net) | 33 | 2012-10-27 | 2011-06-02 |
 | [madrid15m.org](https://madrid15m.org) | 658 | 2019-05-10 | 2012-02-01 |
-| [www.tomalatele.tv/groenlandia](https://www.tomalatele.tv/groenlandia) | 18 | 2013-02-14 | 2012-11-01 |
-| [www.tomalatele.tv/guindatv](https://www.tomalatele.tv/guindatv) | 2 | 2014-04-09 | 2014-04-09 |
 | [www.tomalatele.tv/guindatv](https://www.tomalatele.tv/guindatv) | 36 | 2019-03-28 | 2014-04-10 |
 | [www.tomalatele.tv/web](https://www.tomalatele.tv/web) | 2468 | 2018-11-14 | 2011-08-06 |
-| [www.tomalatele.tv/web/plantilla](https://www.tomalatele.tv/web/plantilla) | 9 | 2013-11-07 | 2012-04-03 |
-| [www.tomalatele.tv/web/pruebas](https://www.tomalatele.tv/web/pruebas) | 33 | 2014-01-03 | 2012-05-09 |
 | [www.tomalatele.tv/web/streaming](https://www.tomalatele.tv/web/streaming) | 33 | 2012-05-22 | 2012-05-09 |
-| [www.tomalatele.tv/web/telek](https://www.tomalatele.tv/web/telek) | 17 | 2014-06-03 | 2014-01-31 |
 
 Para reordenar la tabla puede usar las extensiones
 [`Tampermonkey`](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=es)
