@@ -29,7 +29,7 @@ def get_yml(path):
     if not os.path.isfile(path):
         return []
     with open(path, "r") as f:
-        return list(yaml.load_all(f))
+        return list(yaml.load_all(f, Loader=yaml.FullLoader))
 
 
 def str_list(s):

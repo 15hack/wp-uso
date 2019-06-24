@@ -29,6 +29,7 @@ def sort_dom(r):
     return dom + [path] + list(r[1:])
 
 activity=[]
+comments={}
 for db in DBs:
     print(title(db.host))
     db.connect()
@@ -71,22 +72,33 @@ for db in DBs:
         post_status = 'publish' and
         post_type in ('post', 'page')
 	''', debug="activity", to_tuples=True)
-
     activity.extend(results)
+
+    for r in db.multi_execute(sites, '''
+        select
+            '{0}' site,
+            count(*) c
+        from
+            {2}comments
+        where
+            comment_type!='pingback' and
+            comment_approved=1
+    ''', debug="comments"):
+        comments[r["site"]]=r["c"]
     db.close()
 
 activity = sorted(activity, key=sort_dom)
 
 with open("README.md", "w") as f:
     f.write('''
-| BLOG | POSTs | Último uso | 1º uso |
-|:-----|------:|-----------:|-------:|
+| BLOG | POSTs | Comentarios | Último uso | 1º uso |
+|:-----|------:|------------:|-----------:|-------:|
     '''.strip())
     for row in activity:
         url, num, ini, fin = row
         f.write('''
-| [{0}](https://{0}) | {1} | {2:%Y-%m-%d} | {3:%Y-%m-%d} |
-        '''.rstrip().format(*row))
+| [{1}](https://{1}) | {2} | {0} | {3:%Y-%m-%d} | {4:%Y-%m-%d} |
+        '''.rstrip().format(comments[url], *row))
     f.write('''\n
 Para reordenar la tabla puede usar las extensiones
 [`Tampermonkey`](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=es)
