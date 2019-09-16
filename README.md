@@ -1,7 +1,7 @@
 | BLOG | POSTs | Comentarios | Último uso | 1º uso |
 |:-----|------:|------------:|-----------:|-------:|
 | [takethesquare.net](https://takethesquare.net) | 923 | 2 | 2019-06-23 | 2011-07-06 |
-| [15oct.takethesquare.net](https://15oct.takethesquare.net) | 65 | 11179 | 2017-07-13 | 2011-09-11 |
+| [15oct.takethesquare.net](https://15oct.takethesquare.net) | 65 | 11541 | 2017-07-13 | 2011-09-11 |
 | [antibanks.takethesquare.net](https://antibanks.takethesquare.net) | 19 | 65 | 2012-02-23 | 2011-08-15 |
 | [dec10.takethesquare.net](https://dec10.takethesquare.net) | 36 | 178 | 2011-11-30 | 2011-11-03 |
 | [howtocamp.takethesquare.net](https://howtocamp.takethesquare.net) | 247 | 937 | 2012-09-05 | 2011-10-10 |
@@ -40,7 +40,7 @@
 | [leon.tomalaplaza.net](https://leon.tomalaplaza.net) | 9 | 41 | 2017-01-22 | 2011-05-19 |
 | [lleida.tomalaplaza.net](https://lleida.tomalaplaza.net) | 5 | 1 | 2017-01-22 | 2011-05-19 |
 | [logrono.tomalaplaza.net](https://logrono.tomalaplaza.net) | 25 | 13 | 2011-06-07 | 2011-05-18 |
-| [madrid.tomalaplaza.net](https://madrid.tomalaplaza.net) | 3390 | 25533 | 2019-06-01 | 2011-04-11 |
+| [madrid.tomalaplaza.net](https://madrid.tomalaplaza.net) | 3390 | 25540 | 2019-06-01 | 2011-04-11 |
 | [malaga.tomalaplaza.net](https://malaga.tomalaplaza.net) | 462 | 684 | 2017-01-22 | 2011-05-19 |
 | [mayo2013.tomalaplaza.net](https://mayo2013.tomalaplaza.net) | 1 | 27 | 2013-04-16 | 2013-04-16 |
 | [menorca.tomalaplaza.net](https://menorca.tomalaplaza.net) | 276 | 54 | 2013-09-18 | 2011-05-21 |
@@ -70,7 +70,7 @@
 | [arganzuela.tomalosbarrios.net](https://arganzuela.tomalosbarrios.net) | 1088 | 409 | 2015-06-29 | 2011-05-30 |
 | [arroyomolinos.tomalosbarrios.net](https://arroyomolinos.tomalosbarrios.net) | 270 | 61 | 2014-04-02 | 2011-06-04 |
 | [asamblea-sanlorenzo-escorial.tomalosbarrios.net](https://asamblea-sanlorenzo-escorial.tomalosbarrios.net) | 565 | 103 | 2014-02-10 | 2011-06-09 |
-| [asambleademostoles.tomalosbarrios.net](https://asambleademostoles.tomalosbarrios.net) | 220 | 54 | 2015-11-25 | 2011-06-06 |
+| [asambleademostoles.tomalosbarrios.net](https://asambleademostoles.tomalosbarrios.net) | 220 | 55 | 2015-11-25 | 2011-06-06 |
 | [asambleaplayasalicante.tomalosbarrios.net](https://asambleaplayasalicante.tomalosbarrios.net) | 9 | 0 | 2011-09-24 | 2011-08-15 |
 | [austrias.tomalosbarrios.net](https://austrias.tomalosbarrios.net) | 450 | 188 | 2016-11-27 | 2011-05-28 |
 | [barajas.tomalosbarrios.net](https://barajas.tomalosbarrios.net) | 301 | 209 | 2016-08-31 | 2011-05-15 |
@@ -81,7 +81,7 @@
 | [boadilladelmonte.tomalosbarrios.net](https://boadilladelmonte.tomalosbarrios.net) | 28 | 2 | 2011-06-28 | 2011-04-26 |
 | [boalo.tomalosbarrios.net](https://boalo.tomalosbarrios.net) | 8 | 1 | 2011-10-11 | 2011-05-31 |
 | [canadareal.tomalosbarrios.net](https://canadareal.tomalosbarrios.net) | 17 | 60 | 2013-12-24 | 2011-06-15 |
-| [cercedilla.tomalosbarrios.net](https://cercedilla.tomalosbarrios.net) | 150 | 68 | 2013-01-25 | 2011-06-11 |
+| [cercedilla.tomalosbarrios.net](https://cercedilla.tomalosbarrios.net) | 150 | 70 | 2013-01-25 | 2011-06-11 |
 | [chamartin.tomalosbarrios.net](https://chamartin.tomalosbarrios.net) | 77 | 62 | 2013-06-04 | 2011-05-31 |
 | [chapineria.tomalosbarrios.net](https://chapineria.tomalosbarrios.net) | 37 | 11 | 2011-08-13 | 2011-05-31 |
 | [chueca.tomalosbarrios.net](https://chueca.tomalosbarrios.net) | 169 | 23 | 2014-09-25 | 2011-05-31 |
@@ -95,7 +95,7 @@
 | [daganzodearriba.tomalosbarrios.net](https://daganzodearriba.tomalosbarrios.net) | 64 | 3 | 2013-06-18 | 2011-06-05 |
 | [debatedelpueblo.tomalosbarrios.net](https://debatedelpueblo.tomalosbarrios.net) | 28 | 19 | 2011-10-12 | 2011-06-28 |
 | [debatepopular.tomalosbarrios.net](https://debatepopular.tomalosbarrios.net) | 24 | 5 | 2012-07-27 | 2012-07-12 |
-| [dosdemayo.tomalosbarrios.net](https://dosdemayo.tomalosbarrios.net) | 1161 | 290 | 2017-07-17 | 2011-05-28 |
+| [dosdemayo.tomalosbarrios.net](https://dosdemayo.tomalosbarrios.net) | 1161 | 291 | 2017-07-17 | 2011-05-28 |
 | [elalamo.tomalosbarrios.net](https://elalamo.tomalosbarrios.net) | 28 | 21 | 2011-09-20 | 2011-05-31 |
 | [elejido.tomalosbarrios.net](https://elejido.tomalosbarrios.net) | 11 | 23 | 2011-10-28 | 2011-06-03 |
 | [enbustarviejo.tomalosbarrios.net](https://enbustarviejo.tomalosbarrios.net) | 354 | 29 | 2013-07-15 | 2011-07-11 |
@@ -115,7 +115,7 @@
 | [lasmatas.tomalosbarrios.net](https://lasmatas.tomalosbarrios.net) | 21 | 15 | 2011-11-01 | 2011-06-21 |
 | [lasrozas.tomalosbarrios.net](https://lasrozas.tomalosbarrios.net) | 137 | 36 | 2015-02-16 | 2011-05-31 |
 | [lastablassanchinarro.tomalosbarrios.net](https://lastablassanchinarro.tomalosbarrios.net) | 82 | 0 | 2011-12-01 | 2011-05-29 |
-| [lavapies.tomalosbarrios.net](https://lavapies.tomalosbarrios.net) | 1073 | 543 | 2017-06-18 | 2011-05-25 |
+| [lavapies.tomalosbarrios.net](https://lavapies.tomalosbarrios.net) | 1073 | 544 | 2017-06-18 | 2011-05-25 |
 | [leganes.tomalosbarrios.net](https://leganes.tomalosbarrios.net) | 700 | 171 | 2014-05-07 | 2009-10-31 |
 | [letras.tomalosbarrios.net](https://letras.tomalosbarrios.net) | 268 | 105 | 2014-07-18 | 2011-06-07 |
 | [lucero.tomalosbarrios.net](https://lucero.tomalosbarrios.net) | 585 | 143 | 2014-03-18 | 2011-06-13 |
@@ -167,7 +167,7 @@
 | [zarzalejo.tomalosbarrios.net](https://zarzalejo.tomalosbarrios.net) | 33 | 13 | 2012-10-27 | 2011-06-02 |
 | [madrid15m.org](https://madrid15m.org) | 658 | 14 | 2019-05-10 | 2012-02-01 |
 | [www.tomalatele.tv/guindatv](https://www.tomalatele.tv/guindatv) | 36 | 0 | 2019-03-28 | 2014-04-10 |
-| [www.tomalatele.tv/web](https://www.tomalatele.tv/web) | 2468 | 738 | 2018-11-14 | 2011-08-06 |
+| [www.tomalatele.tv/web](https://www.tomalatele.tv/web) | 2468 | 734 | 2018-11-14 | 2011-08-06 |
 | [www.tomalatele.tv/web/streaming](https://www.tomalatele.tv/web/streaming) | 33 | 0 | 2012-05-22 | 2012-05-09 |
 
 Para reordenar la tabla puede usar las extensiones
