@@ -105,9 +105,11 @@ with open("README.md", "w") as f:
         row["admin"] = "https://{}/wp-admin/".format(row["site"])
         cmt = comments.get(row["site"], {})
         row["comentarios"] = cmt.get("comentarios", 0)
-        row["ult_comentario"] = cmt.get("ult", "")
+        row["ult_comentario"] = cmt.get("ult")
         if row["ult_comentario"]:
             row["ult_comentario"] = row["ult_comentario"].strftime("%Y-%m-%d")
+        else:
+            row["ult_comentario"] = ""
         f.write('''
 | [{site}](https://{site}) | [{num}]({admin}edit.php?orderby=date&order=asc) | [{comentarios}]({admin}edit-comments.php?orderby=comment_date&order=desc) | {ini:%Y-%m-%d} | {fin:%Y-%m-%d} | {ult_comentario} |
         '''.rstrip().format(**row))
