@@ -111,7 +111,7 @@ with open("README.md", "w") as f:
         else:
             row["ult_comentario"] = ""
         f.write('''
-| [{site}](https://{site}) | [{num}]({admin}edit.php?orderby=date&order=asc) | [{comentarios}]({admin}edit-comments.php?orderby=comment_date&order=desc) | {ini:%Y-%m-%d} | {fin:%Y-%m-%d} | {ult_comentario} |
+| [{site}](https://{site}) | [{num}]({admin}edit.php?orderby=date&order=asc) | [{comentarios}]({admin}edit-comments.php?comment_type=comment&orderby=comment_date&order=desc) | {ini:%Y-%m-%d} | {fin:%Y-%m-%d} | {ult_comentario} |
         '''.rstrip().format(**row))
     f.write('''\n
 Para reordenar la tabla puede usar las extensiones
