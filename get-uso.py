@@ -102,10 +102,10 @@ with open("README.md", "w") as f:
 |:-----|----------:|------------:|-----------:|-------:|------------------:|
     '''.strip())
     for row in activity:
+        row["admin"] = "https://{}/wp-admin/".format(row["site"])
         cmt = comments.get(row["site"], {})
         row["comentarios"] = cmt.get("comentarios", 0)
         row["ult_comentario"] = cmt.get("ult", "")
-        row["admin"] = "https://{}/wp-admin/".format(r["site"])
         if row["ult_comentario"]:
             row["ult_comentario"] = row["ult_comentario"].strftime("%Y-%m-%d")
         f.write('''
