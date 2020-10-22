@@ -15,18 +15,19 @@ def title(s, c='=', l=10):
     return s
 
 def clean_url(url):
-    url = url.split("://", 1)[1]
-    if url.endswith("/"):
-        url = url[:-1]
+    slp = url.split("://", 1)
+    if len(slp)==2 and slp[0].lower() in ("http", "https"):
+        url = slp[1]
+    url = url.rstrip("/")
     return url
 
 def sort_dom(r):
-    prs = urlparse("https://"+r[0])
+    prs = urlparse("https://"+r["site"])
     dom = prs.netloc
     path = prs.path
     dom = dom.split(".")
     dom.reverse()
-    return dom + [path] + list(r[1:])
+    return tuple(dom + [path] + list(k for k, v in r.items() if k!="site"))
 
 activity=[]
 comments={}
@@ -62,43 +63,54 @@ for db in DBs:
 
 
     results = db.multi_execute(sites, '''
-        select
+		select
             '{0}' site,
             count(*) num,
-            max(post_date) fin,
-            min(post_date) ini
-        from {2}posts
-        where
-        post_status = 'publish' and
-        post_type in ('post', 'page')
-	''', debug="activity", to_tuples=True)
+            max(t1.post_date) fin,
+            min(t1.post_date) ini
+		from
+            {2}posts t1
+            left join {2}posts t3 on t1.post_parent = t3.ID
+		where
+    		(
+                t1.post_status = 'publish' or
+                (t1.post_status='inherit' and t3.post_status = 'publish')
+            ) and
+    		t1.post_type in ('post', 'page')
+	''', debug="activity")
     activity.extend(results)
 
     for r in db.multi_execute(sites, '''
         select
             '{0}' site,
-            count(*) c
+            count(*) comentarios,
+            max(comment_date) ult
         from
             {2}comments
         where
             comment_type!='pingback' and
             comment_approved=1
     ''', debug="comments"):
-        comments[r["site"]]=r["c"]
+        comments[r["site"]]=r
     db.close()
 
 activity = sorted(activity, key=sort_dom)
 
 with open("README.md", "w") as f:
     f.write('''
-| BLOG | POSTs | Comentarios | Último uso | 1º uso |
-|:-----|------:|------------:|-----------:|-------:|
+| BLOG | post/page | Comentarios | Último uso | 1º uso | Último comentario |
+|:-----|----------:|------------:|-----------:|-------:|------------------:|
     '''.strip())
     for row in activity:
-        url, num, ini, fin = row
+        cmt = comments.get(row["site"], {})
+        row["comentarios"] = cmt.get("comentarios", 0)
+        row["ult_comentario"] = cmt.get("ult", "")
+        row["admin"] = "https://{}/wp-admin/".format(r["site"])
+        if row["ult_comentario"]:
+            row["ult_comentario"] = row["ult_comentario"].strftime("%Y-%m-%d")
         f.write('''
-| [{1}](https://{1}) | {2} | {0} | {3:%Y-%m-%d} | {4:%Y-%m-%d} |
-        '''.rstrip().format(comments[url], *row))
+| [{site}](https://{site}) | [{num}]({admin}edit.php?orderby=date&order=asc) | [{comentarios}]({admin}edit-comments.php?orderby=comment_date&order=desc) | {ini:%Y-%m-%d} | {fin:%Y-%m-%d} | {ult_comentario} |
+        '''.rstrip().format(**row))
     f.write('''\n
 Para reordenar la tabla puede usar las extensiones
 [`Tampermonkey`](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=es)

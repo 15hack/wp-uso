@@ -83,6 +83,7 @@ class DB:
         self.passwd = passwd
         self.db = None
         self.ip = get_ip(server)
+        self.forze_ok = [tuple(i.split(":", 1)) for i in str_list(kargv.get("forze_ok"))]
         self.db_ban = str_list(kargv.get("db_ban"))
         self.url_ban = str_list(kargv.get("url_ban"))
         self.dom_ban = str_list(kargv.get("dom_ban"))
@@ -117,12 +118,12 @@ class DB:
                 return False
         return True
 
-    def execute(self, sql):
+    def execute(self, file):
         cursor = self.db.cursor()
-        if os.path.isfile(sql):
-            with open(sql, 'r') as myfile:
-                sql = myfile.read()
-        cursor.execute(sql)
+        _sql = None
+        with open(file, 'r') as myfile:
+            _sql = myfile.read()
+        cursor.execute(_sql)
         result = cursor.fetchall()
         cursor.close()
         return flat(result)
@@ -162,89 +163,6 @@ class DB:
 
         return results
         # return flat(results)
-
-
-class DBLite:
-    def __init__(self, file, total=None):
-        self.file = file
-        self.con = sqlite3.connect(file)
-        self.cursor = self.con.cursor()
-        self.count = 0
-        self.total = total
-        self.tables = {}
-        self.load_tables()
-
-    def execute(self, sql_file):
-        with open(sql_file, 'r') as schema:
-            qry = schema.read()
-            self.cursor.executescript(qry)
-            self.con.commit()
-            if "CREATE TABLE" in qry.upper():
-                self.load_tables()
-
-    def load_tables(self):
-        self.tables = {}
-        for t in self.select("SELECT name FROM sqlite_master WHERE type='table'"):
-            self.cursor.execute("select * from "+t+" limit 0")
-            self.tables[t] = tuple(col[0] for col in self.cursor.description)
-
-    def insert(self, table, **kargv):
-        ok_keys = self.tables[table]
-        keys = []
-        vals = []
-        for k, v in kargv.items():
-            if k in ok_keys and v is not None and not(isinstance(v, str) and len(v) == 0):
-                keys.append(k)
-                vals.append(v)
-        sql = "insert into %s (%s) values (%s)" % (
-            table, ", ".join(keys), ("?," * len(vals))[:-1])
-        self.cursor.execute(sql, vals)
-        if self.total is not None:
-            self.count = self.count + 1
-            print("Creando sqlite {0:.0f}%".format(
-                self.count*100/self.total), end="\r")
-
-    def commit(self):
-        self.con.commit()
-
-    def close(self):
-        self.con.commit()
-        self.cursor.close()
-        self.con.execute("VACUUM")
-        self.con.commit()
-        self.con.close()
-
-    def select(self, sql, to_bunch=False, to_tuples=False):
-        sql = sql.strip()
-        if not sql.lower().startswith("select"):
-            sql = "select * from "+sql
-        self.cursor.execute(sql)
-        r = build_result(self.cursor, to_bunch=to_bunch, to_tuples=to_tuples)
-        return r
-
-    def get_sql_table(self, table):
-        sql = "SELECT sql FROM sqlite_master WHERE type='table' AND name=?"
-        self.cursor.execute(sql, (table,))
-        sql = self.cursor.fetchone()[0]
-        return sql
-
-    def size(self, file=None, suffix='B'):
-        file = file or self.file
-        num = os.path.getsize(file)
-        for unit in ('', 'K', 'M', 'G', 'T', 'P', 'E', 'Z'):
-            if abs(num) < 1024.0:
-                return ("%3.1f%s%s" % (num, unit, suffix))
-            num /= 1024.0
-        return ("%.1f%s%s" % (num, 'Yi', suffix))
-
-    def zip(self):
-        zip = os.path.splitext(self.file)[0]+".7z"
-        if os.path.isfile(zip):
-            os.remove(zip)
-        cmd = "7z a %s %s" % (zip, self.file)
-        check_call(cmd.split(), stdout=DEVNULL, stderr=STDOUT)
-        return self.size(zip)
-
 
 me = os.path.realpath(__file__)
 dr = os.path.dirname(me)
